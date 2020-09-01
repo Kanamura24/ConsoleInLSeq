@@ -109,6 +109,15 @@ RTC::ReturnCode_t ConsoleInLSeq::onDeactivated(RTC::UniqueId ec_id)
 
 RTC::ReturnCode_t ConsoleInLSeq::onExecute(RTC::UniqueId ec_id)
 {
+  m_out.data.length(6);
+  for(int i = 0;i < 6;i++) {
+    long value;
+    std::cout << "Input number:" << std::ends;
+    std::cin >> value;
+    //std::cout << "Data is " << value << std::endl;
+    m_out.data[i] = value;
+  }
+  m_outOut.write();
   return RTC::RTC_OK;
 }
 
